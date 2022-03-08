@@ -40,7 +40,8 @@
 						<field name="update_product_data" />
 						<label for="update_product_data" string="(Includes Updation of Products,Images and Variants)"></label>
 						<newline/>
-						<field name="update_presta_product_inventory"/>
+						<!-- <field name="update_presta_product_inventory"/> -->
+						
 						<!--<field name="update_product_price"/>-->
  						<field name="update_order_status"/>
 					</group>
@@ -51,7 +52,7 @@
 						<field name="export_presta_categories"/>
 						<field name="export_presta_products"/>
 						<field name="export_presta_products_variants"/>
-						<field name="export_presta_product_inventory"/>
+						<!-- <field name="export_presta_product_inventory"/> -->
 						<field name="export_presta_orders"/>
 					</group>
 				</group>

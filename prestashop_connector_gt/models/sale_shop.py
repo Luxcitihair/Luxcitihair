@@ -742,6 +742,7 @@ class SaleShop(models.Model):
             print('eee', str(e))
 
     def create_address(self, address_dict, prestashop):
+        print('Inside Create Address>>>>>>>>>>>>>>>>>>>>>>>>>>')
         try:
             address_id = False
             res_partner_obj = self.env['res.partner']
@@ -835,7 +836,9 @@ class SaleShop(models.Model):
                         address_id = res_partner_obj.search(
                             [('address_id', '=', address_dict.get('id')), ('prestashop_address', '=', True)])
                         if not address_id:
+                            print('For Create Address>>>>>>>>>>>>>>>>>>>>>>>>>>')
                             shop.create_address(address_dict, prestashop)
+                            print('For Write Address>>>>>>>>>>>>>>>>>>>>>>>>>>')
                             shop.write({'last_address_id_import': int(address_dict.get('id'))})
                             self.env.cr.commit()
             except Exception as e:
@@ -1686,6 +1689,7 @@ class SaleShop(models.Model):
         return record_id
 
     def create_presta_order(self, order_detail, prestashop):
+        print('Inside Create Order>>>>>>>>>>>>>>>>>>>>>>>>>>')
         sale_order_obj = self.env['sale.order']
         res_partner_obj = self.env['res.partner']
         carrier_obj = self.env['delivery.carrier']
@@ -1798,6 +1802,7 @@ class SaleShop(models.Model):
 
             self.manageOrderLines(sale_order_id, order_detail, prestashop)
             self.manageOrderWorkflow(sale_order_id, order_detail, state_id)
+            print('Done OrderLine and Orderworkflowr>>>>>>>>>>>>>>>>>>>>>>>>>>')
             self.env.cr.commit()
             return sale_order_id
         except Exception as e:
@@ -1830,7 +1835,9 @@ class SaleShop(models.Model):
                     else:
                         orders = [orders]
                     for order in orders:
+                        print('For Create Order>>>>>>>>>>>>>>>>>>>>>>>>>>')
                         shop.create_presta_order(order, prestashop)
+                        print('For Write Order>>>>>>>>>>>>>>>>>>>>>>>>>>')
                         shop.write({'last_order_id_id_import': order.get('id')})
                     self.env.cr.commit()
         except Exception as e:
