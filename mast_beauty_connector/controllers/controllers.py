@@ -13,23 +13,9 @@ class MastBeautyConnectorController(http.Controller):
         session_details = request.env['ir.http'].session_info()
         return session_details
 
-    @http.route('/web/get/contacts', type='json', auth='user')
-    def get_contacts(self):
-        student_rec = request.env['res.partner'].search([])
-        std_list = []
-        for rec in student_rec:
-            std_dic = {
-                'id': rec.id,
-                'name': rec.name,
-                'email': rec.email,
 
-            }
-            std_list.append(std_dic)
-
-        return std_list
-
-    @http.route('/get/product/category', type='json', auth='user')
-    def get_product_category(self):
+    @http.route('/web/get/product/category', type='json', auth='user')
+    def get_mast_product_category(self):
         prod_categ_rec = request.env['product.category'].search([])
         product_categ_list = [{
             'id': rec.id,
@@ -46,6 +32,7 @@ class MastBeautyConnectorController(http.Controller):
         } for rec in prod_categ_rec]
 
         return product_categ_list
+
 
     @http.route('/create/product/category', type='json', auth='user')
     def create_product_category(self, **rec):
@@ -97,3 +84,18 @@ class MastBeautyConnectorController(http.Controller):
                             (0, 0, {'attribute_id': create_attribute_id, 'value_ids': create_values, })]})
 
             return {'id': line_create.id}
+
+    @http.route('/web/get/contacts', type='json', auth='user')
+    def get_contacts(self):
+        student_rec = request.env['res.partner'].search([])
+        std_list = []
+        for rec in student_rec:
+            std_dic = {
+                'id': rec.id,
+                'name': rec.name,
+                'email': rec.email,
+
+            }
+            std_list.append(std_dic)
+
+        return std_list
