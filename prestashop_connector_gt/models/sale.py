@@ -53,6 +53,7 @@ class sale_order(models.Model):
     order_status = fields.Many2one('presta.order.status', string="Status")
     presta_order_ref=fields.Char('Order Reference')
     pretsa_payment_mode=fields.Selection([('bankwire','Bankwire'),('cheque','Payment By Cheque'),('banktran','Bank transfer'),('cod','Cash on delivery  (COD)')],string='Payment mode',default='cheque')
+    pretsa_payment_mode1=fields.Char(string='Payment mode')
     carrier_prestashop=fields.Many2one('delivery.carrier',string='Carrier In Prestashop')
     workflow_order_id=fields.Many2one('import.order.workflow',string='Order Work Flow')
     prestashop_order=fields.Boolean('Prestashop Order')
@@ -62,7 +63,7 @@ class sale_order(models.Model):
     shop_ids = fields.Many2many('sale.shop', 'saleorder_shop_rel', 'saleorder_id', 'shop_id', string="Shop")
     write_date = fields.Datetime(string="Write Date")
     to_be_exported = fields.Boolean(string="To be exported?")
-
+    order_status_update = fields.Boolean(string="To Update Order Status")
     
     
 class sale_order_line(models.Model):

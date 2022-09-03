@@ -10,6 +10,7 @@
                 <xpath expr="//field[@name='partner_shipping_id']" position="after">
                     <field name="presta_order_ref"/>
                      <field name="to_be_exported" readonly="0"/>
+                     <field name="order_status_update"/>
                     <field name="prestashop_order" invisible="1"/>
                     <!--<field name="shop_id"/>-->
                     <!--<field name="shop_ids" readonly="1"/>-->
@@ -31,7 +32,7 @@
                                 <field name="carrier_prestashop" required="0"/>
                                 <separator colspan="2" string="Payment Details"/>
                                 <field name="pretsa_payment_mode"/>
-                                <field name="pretsa_payment_mode"/>
+                                <field name="pretsa_payment_mode1"/>
                             </group>
                         </form>
                     </page>
